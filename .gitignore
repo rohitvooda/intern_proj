@@ -1,0 +1,18 @@
+# Dependency directories
+**/node_modules/
+**/.next/
+**/venv/
+**/.venv/
+**/__pycache__/
+
+# Compiled source
+*.pyc
+*.pyo
+*.pyd
+
+# Databases and OS files
+*.db
+*.sqlite3
+.DS_Store
+Thumbs.db
+.eslintcache
