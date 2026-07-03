@@ -29,7 +29,7 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
   }
 
   return (
-    <div className="w-full h-full relative bg-[#02020a]">
+    <div className="w-full h-full relative bg-[#010604]">
       {/* 3D Canvas */}
       <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
         <ambientLight intensity={0.5} />
@@ -67,10 +67,10 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
             >
               <sphereGeometry args={[0.8, 32, 32]} />
               <meshStandardMaterial 
-                color="#8b5cf6" 
+                color="#10b981" 
                 roughness={0.4} 
                 metalness={0.2} 
-                emissive="#4c1d95"
+                emissive="#064e3b"
                 emissiveIntensity={0.2}
               />
             </mesh>
@@ -190,7 +190,7 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
 // Fallback Interactive UI for browsers without WebGL
 function InteractiveCellFallback({ selectedKey, onSelect }: { selectedKey: string; onSelect: (key: string) => void }) {
   return (
-    <div className="w-full h-full relative bg-[#02020a] flex flex-col items-center justify-center p-4">
+    <div className="w-full h-full relative bg-[#010604] flex flex-col items-center justify-center p-4">
       <h3 className="font-space font-bold text-sm text-cyan-400 mb-6 uppercase tracking-widest text-center">
         Interactive Cell Map (2D Vector Mode)
       </h3>
