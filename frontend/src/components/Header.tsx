@@ -34,19 +34,13 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-panel border-b border-white/10 px-6 py-3 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-[#0d0d0d] border-b-4 border-white px-6 py-4 flex items-center justify-between">
       <div className="flex items-center gap-8">
         <Link href={token ? "/dashboard" : "/"} className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-cyan-400 flex items-center justify-center glow-purple">
-            <span className="font-space font-extrabold text-xl text-white">S</span>
-          </div>
           <div>
-            <h1 className="font-space font-extrabold text-lg tracking-wider bg-gradient-to-r from-white via-[#d1d5db] to-violet-400 bg-clip-text text-transparent">
+            <h1 className="font-space font-extrabold text-2xl tracking-wider text-white">
               SCIENCEVERSE
             </h1>
-            <span className="text-[10px] text-cyan-400 font-mono tracking-widest block -mt-1">
-              AI LEARNING PLATFORM
-            </span>
           </div>
         </Link>
 

@@ -29,12 +29,11 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
   }
 
   return (
-    <div className="w-full h-full relative bg-[#010604]">
+    <div className="w-full h-full relative bg-[#ffffff] border-2 border-black rounded-lg min-h-[400px]">
       {/* 3D Canvas */}
       <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1.2} />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} />
+        <ambientLight intensity={0.8} />
+        <pointLight position={[10, 10, 10]} intensity={0.5} />
         
         <Center>
           <group>
@@ -43,16 +42,12 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
               onClick={() => onSelectOrganelle('membrane')}
               scale={selectedKey === 'membrane' ? 1.05 : 1.0}
             >
-              <sphereGeometry args={[2.5, 32, 32]} />
-              <meshPhysicalMaterial 
-                color="#fbbf24" 
-                transparent 
-                opacity={0.15} 
-                roughness={0.2}
-                metalness={0.1}
-                clearcoat={1.0}
-                clearcoatRoughness={0.1}
-                depthWrite={false}
+              <sphereGeometry args={[2.5, 20, 20]} />
+              <meshBasicMaterial 
+                color={selectedKey === 'membrane' ? '#ef4444' : '#555555'} 
+                wireframe
+                transparent
+                opacity={0.25}
               />
             </mesh>
 
@@ -65,13 +60,10 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
               scale={selectedKey === 'nucleus' ? 1.1 : 1.0}
               position={[0, 0, 0]}
             >
-              <sphereGeometry args={[0.8, 32, 32]} />
-              <meshStandardMaterial 
-                color="#10b981" 
-                roughness={0.4} 
-                metalness={0.2} 
-                emissive="#064e3b"
-                emissiveIntensity={0.2}
+              <sphereGeometry args={[0.8, 16, 16]} />
+              <meshBasicMaterial 
+                color={selectedKey === 'nucleus' ? '#ef4444' : '#000000'} 
+                wireframe
               />
             </mesh>
 
@@ -85,8 +77,11 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
               position={[1.4, 0.6, 0.4]}
               rotation={[0.5, 0.5, 0.8]}
             >
-              <cylinderGeometry args={[0.22, 0.22, 0.7, 16]} />
-              <meshStandardMaterial color="#ef4444" roughness={0.3} metalness={0.1} />
+              <cylinderGeometry args={[0.22, 0.22, 0.7, 10]} />
+              <meshBasicMaterial 
+                color={selectedKey === 'mitochondria' ? '#ef4444' : '#000000'} 
+                wireframe
+              />
             </mesh>
 
             {/* Mitochondria 2 */}
@@ -99,8 +94,11 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
               position={[-0.8, -1.2, -0.6]}
               rotation={[-0.4, 0.9, 0.2]}
             >
-              <cylinderGeometry args={[0.2, 0.2, 0.6, 16]} />
-              <meshStandardMaterial color="#ef4444" roughness={0.3} metalness={0.1} />
+              <cylinderGeometry args={[0.2, 0.2, 0.6, 10]} />
+              <meshBasicMaterial 
+                color={selectedKey === 'mitochondria' ? '#ef4444' : '#000000'} 
+                wireframe
+              />
             </mesh>
 
             {/* Golgi Apparatus (Flattened Plates) */}
@@ -114,16 +112,25 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
               rotation={[0.3, -0.5, 0.2]}
             >
               <mesh position={[0, 0, 0]}>
-                <torusGeometry args={[0.4, 0.08, 8, 24, Math.PI]} />
-                <meshStandardMaterial color="#ec4899" roughness={0.4} />
+                <torusGeometry args={[0.4, 0.08, 6, 16, Math.PI]} />
+                <meshBasicMaterial 
+                  color={selectedKey === 'golgi' ? '#ef4444' : '#000000'} 
+                  wireframe
+                />
               </mesh>
               <mesh position={[0, 0.15, 0]} scale={[0.85, 0.85, 0.85]}>
-                <torusGeometry args={[0.4, 0.08, 8, 24, Math.PI]} />
-                <meshStandardMaterial color="#ec4899" roughness={0.4} />
+                <torusGeometry args={[0.4, 0.08, 6, 16, Math.PI]} />
+                <meshBasicMaterial 
+                  color={selectedKey === 'golgi' ? '#ef4444' : '#000000'} 
+                  wireframe
+                />
               </mesh>
               <mesh position={[0, 0.3, 0]} scale={[0.7, 0.7, 0.7]}>
-                <torusGeometry args={[0.4, 0.08, 8, 24, Math.PI]} />
-                <meshStandardMaterial color="#ec4899" roughness={0.4} />
+                <torusGeometry args={[0.4, 0.08, 6, 16, Math.PI]} />
+                <meshBasicMaterial 
+                  color={selectedKey === 'golgi' ? '#ef4444' : '#000000'} 
+                  wireframe
+                />
               </mesh>
             </group>
 
@@ -137,8 +144,11 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
               position={[0.4, -0.6, 0.5]}
               rotation={[1.2, 0.3, 0.5]}
             >
-              <torusGeometry args={[1.1, 0.12, 12, 32]} />
-              <meshStandardMaterial color="#f43f5e" roughness={0.5} transparent opacity={0.8} />
+              <torusGeometry args={[1.1, 0.12, 6, 20]} />
+              <meshBasicMaterial 
+                color={selectedKey === 'er' ? '#ef4444' : '#000000'} 
+                wireframe
+              />
             </mesh>
 
             {/* Ribosomes (Tiny Dots) */}
@@ -146,7 +156,6 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
               e.stopPropagation();
               onSelectOrganelle('ribosomes');
             }}>
-              {/* Scattered particles */}
               {Array.from({ length: 15 }).map((_, i) => {
                 const angle = (i / 15) * Math.PI * 2;
                 const radius = 1.2 + Math.sin(i * 3) * 0.4;
@@ -155,8 +164,11 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
                 const z = Math.sin(angle) * radius;
                 return (
                   <mesh key={i} position={[x, y, z]} scale={selectedKey === 'ribosomes' ? 1.5 : 1.0}>
-                    <sphereGeometry args={[0.04, 8, 8]} />
-                    <meshBasicMaterial color="#06b6d4" />
+                    <sphereGeometry args={[0.04, 4, 4]} />
+                    <meshBasicMaterial 
+                      color={selectedKey === 'ribosomes' ? '#ef4444' : '#000000'} 
+                      wireframe
+                    />
                   </mesh>
                 );
               })}
@@ -165,7 +177,6 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
           </group>
         </Center>
         
-        {/* Mouse controls */}
         <OrbitControls 
           enableZoom={true} 
           enablePan={true} 
@@ -176,10 +187,10 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
       </Canvas>
 
       {/* Floating Organelle Label Indicator */}
-      <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10 text-xs flex items-center gap-2 pointer-events-none">
-        <div className="w-2 h-2 rounded-full animate-ping bg-violet-400" />
-        <span className="font-space text-gray-300">Active Selection:</span>
-        <span className="font-bold text-white uppercase tracking-wider">
+      <div className="absolute top-4 left-4 bg-[#ffffff] px-3 py-1.5 rounded border-2 border-black text-xs flex items-center gap-2 pointer-events-none shadow-[2px_2px_0px_#000000]">
+        <div className="w-2 h-2 rounded-full bg-red-500 border border-black animate-pulse" />
+        <span className="font-space text-black font-semibold">Active Selection:</span>
+        <span className="font-extrabold text-black uppercase tracking-wider">
           {selectedKey.replace('-', ' ')}
         </span>
       </div>
@@ -190,28 +201,28 @@ export default function Cell3DCanvas({ selectedKey, organelles, onSelectOrganell
 // Fallback Interactive UI for browsers without WebGL
 function InteractiveCellFallback({ selectedKey, onSelect }: { selectedKey: string; onSelect: (key: string) => void }) {
   return (
-    <div className="w-full h-full relative bg-[#010604] flex flex-col items-center justify-center p-4">
-      <h3 className="font-space font-bold text-sm text-cyan-400 mb-6 uppercase tracking-widest text-center">
-        Interactive Cell Map (2D Vector Mode)
+    <div className="w-full h-full relative bg-[#ffffff] flex flex-col items-center justify-center p-4 border-2 border-black rounded-lg min-h-[400px]">
+      <h3 className="font-space font-bold text-sm text-black mb-6 uppercase tracking-widest text-center">
+        Interactive Cell Map (2D Wireframe)
       </h3>
       
-      <div className="w-[300px] h-[300px] relative flex items-center justify-center border border-white/5 bg-white/2 rounded-full animate-pulse-slow shadow-inner">
+      <div className="w-[300px] h-[300px] relative flex items-center justify-center border-2 border-black bg-white rounded-full shadow-[4px_4px_0px_#000000]">
         {/* Membrane circle */}
         <div 
           onClick={() => onSelect('membrane')}
-          className={`absolute w-[280px] h-[280px] rounded-full border-2 border-amber-400/30 flex items-center justify-center cursor-pointer transition-all hover:bg-amber-400/5 ${selectedKey === 'membrane' ? 'border-amber-400 scale-105 bg-amber-400/5 shadow-2xl' : ''}`}
+          className={`absolute w-[280px] h-[280px] rounded-full border-2 border-black flex items-center justify-center cursor-pointer transition-all hover:bg-black/5 ${selectedKey === 'membrane' ? 'border-red-500 border-3 scale-105 bg-red-500/5' : ''}`}
         >
           {/* ER Ring */}
           <div 
             onClick={(e) => { e.stopPropagation(); onSelect('er'); }}
-            className={`absolute w-[180px] h-[180px] rounded-full border-2 border-dashed border-rose-500/20 flex items-center justify-center cursor-pointer transition-all hover:bg-rose-500/5 ${selectedKey === 'er' ? 'border-rose-500 scale-105' : ''}`}
+            className={`absolute w-[180px] h-[180px] rounded-full border-2 border-dashed border-black flex items-center justify-center cursor-pointer transition-all hover:bg-black/5 ${selectedKey === 'er' ? 'border-red-500 border-3 scale-105' : ''}`}
           >
             {/* Nucleus Center */}
             <div 
               onClick={(e) => { e.stopPropagation(); onSelect('nucleus'); }}
-              className={`w-[90px] h-[90px] rounded-full bg-violet-600/40 border border-violet-400 flex items-center justify-center cursor-pointer transition-all hover:bg-violet-600/60 ${selectedKey === 'nucleus' ? 'scale-110 bg-violet-600/70 border-2 border-violet-300 glow-purple' : ''}`}
+              className={`w-[90px] h-[90px] rounded-full bg-white border border-black flex items-center justify-center cursor-pointer transition-all hover:bg-black/5 ${selectedKey === 'nucleus' ? 'scale-110 border-2 border-red-500 shadow-[3px_3px_0px_#000000]' : ''}`}
             >
-              <span className="text-[10px] font-bold text-white text-center">NUCLEUS</span>
+              <span className="text-[10px] font-bold text-black text-center">NUCLEUS</span>
             </div>
           </div>
         </div>
@@ -219,25 +230,25 @@ function InteractiveCellFallback({ selectedKey, onSelect }: { selectedKey: strin
         {/* Floating Mitochondria */}
         <div 
           onClick={() => onSelect('mitochondria')}
-          className={`absolute top-6 right-12 px-3 py-1.5 rounded-full bg-red-600/20 border border-red-500 text-[10px] font-bold text-white cursor-pointer transition-all hover:bg-red-600/40 ${selectedKey === 'mitochondria' ? 'scale-110 border-2 glow-cyan' : ''}`}
+          className={`absolute top-6 right-12 px-3 py-1.5 rounded bg-white border border-black text-[10px] font-bold text-black cursor-pointer transition-all hover:bg-black/5 ${selectedKey === 'mitochondria' ? 'scale-110 border-2 border-red-500 shadow-[2px_2px_0px_#000000]' : ''}`}
         >
-          ⚡ Mitochondria
+          Mitochondria
         </div>
 
         {/* Floating Golgi */}
         <div 
           onClick={() => onSelect('golgi')}
-          className={`absolute bottom-10 left-6 px-3 py-1.5 rounded-full bg-pink-600/20 border border-pink-500 text-[10px] font-bold text-white cursor-pointer transition-all hover:bg-pink-600/40 ${selectedKey === 'golgi' ? 'scale-110 border-2' : ''}`}
+          className={`absolute bottom-10 left-6 px-3 py-1.5 rounded bg-white border border-black text-[10px] font-bold text-black cursor-pointer transition-all hover:bg-black/5 ${selectedKey === 'golgi' ? 'scale-110 border-2 border-red-500 shadow-[2px_2px_0px_#000000]' : ''}`}
         >
-          📦 Golgi Body
+          Golgi Body
         </div>
 
         {/* Floating Ribosomes */}
         <div 
           onClick={() => onSelect('ribosomes')}
-          className={`absolute bottom-6 right-10 px-3 py-1.5 rounded-full bg-cyan-600/20 border border-cyan-500 text-[10px] font-bold text-white cursor-pointer transition-all hover:bg-cyan-600/40 ${selectedKey === 'ribosomes' ? 'scale-110 border-2' : ''}`}
+          className={`absolute bottom-6 right-10 px-3 py-1.5 rounded bg-white border border-black text-[10px] font-bold text-black cursor-pointer transition-all hover:bg-black/5 ${selectedKey === 'ribosomes' ? 'scale-110 border-2 border-red-500 shadow-[2px_2px_0px_#000000]' : ''}`}
         >
-          🏗️ Ribosomes
+          Ribosomes
         </div>
       </div>
 

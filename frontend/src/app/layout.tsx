@@ -14,9 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#010604] text-[#f0fdf4]">
-        {/* Cosmos starry background */}
-        <div className="stars-bg"></div>
+      <body className="min-h-screen bg-transparent text-black">
         {children}
       </body>
     </html>

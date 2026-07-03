@@ -2,191 +2,257 @@
 @import "tailwindcss";
 
 @theme {
-  --color-violet-50: #ecfdf5;
-  --color-violet-100: #d1fae5;
-  --color-violet-200: #a7f3d0;
-  --color-violet-300: #6ee7b7;
-  --color-violet-400: #34d399;
-  --color-violet-500: #10b981;
-  --color-violet-600: #059669;
-  --color-violet-700: #047857;
-  --color-violet-800: #065f46;
-  --color-violet-900: #064e3b;
-  --color-violet-950: #022c22;
+  --color-violet-50: #ffffff;
+  --color-violet-100: #e5e5e5;
+  --color-violet-200: #cccccc;
+  --color-violet-300: #b2b2b2;
+  --color-violet-400: #999999;
+  --color-violet-500: #7f7f7f;
+  --color-violet-600: #666666;
+  --color-violet-700: #4c4c4c;
+  --color-violet-800: #333333;
+  --color-violet-900: #1a1a1a;
+  --color-violet-950: #0d0d0d;
 
-  --color-indigo-50: #f0fdf4;
-  --color-indigo-100: #dcfce7;
-  --color-indigo-200: #bbf7d0;
-  --color-indigo-300: #86efac;
-  --color-indigo-400: #4ade80;
-  --color-indigo-500: #22c55e;
-  --color-indigo-600: #16a34a;
-  --color-indigo-700: #15803d;
-  --color-indigo-800: #166534;
-  --color-indigo-900: #14532d;
-  --color-indigo-950: #052e16;
+  --color-indigo-50: #ffffff;
+  --color-indigo-100: #e5e5e5;
+  --color-indigo-200: #cccccc;
+  --color-indigo-300: #b2b2b2;
+  --color-indigo-400: #999999;
+  --color-indigo-500: #7f7f7f;
+  --color-indigo-600: #666666;
+  --color-indigo-700: #4c4c4c;
+  --color-indigo-800: #333333;
+  --color-indigo-900: #1a1a1a;
+  --color-indigo-950: #0d0d0d;
 
-  --color-cyan-50: #fffbeb;
-  --color-cyan-100: #fef3c7;
-  --color-cyan-200: #fde68a;
-  --color-cyan-300: #fcd34d;
-  --color-cyan-400: #fbbf24;
-  --color-cyan-500: #f59e0b;
-  --color-cyan-600: #d97706;
-  --color-cyan-700: #b45309;
-  --color-cyan-800: #92400e;
-  --color-cyan-900: #78350f;
-  --color-cyan-950: #451a03;
+  --color-cyan-50: #ffffff;
+  --color-cyan-100: #e5e5e5;
+  --color-cyan-200: #cccccc;
+  --color-cyan-300: #b2b2b2;
+  --color-cyan-400: #999999;
+  --color-cyan-500: #7f7f7f;
+  --color-cyan-600: #666666;
+  --color-cyan-700: #4c4c4c;
+  --color-cyan-800: #333333;
+  --color-cyan-900: #1a1a1a;
+  --color-cyan-950: #0d0d0d;
 }
 
 :root {
-  --background: #010604;
-  --foreground: #f0fdf4;
+  --background: #fcfcf9 !important; /* Cream/white notebook paper */
+  --foreground: #000000 !important; /* Black marker */
   --font-sans: 'Outfit', sans-serif;
   --font-space: 'Space Grotesk', sans-serif;
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
+/* Force light background variables even if system prefers dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fcfcf9 !important;
+    --foreground: #000000 !important;
+    background-color: #fcfcf9 !important;
+  }
+  
+  html, body {
+    background-color: #fcfcf9 !important;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px) !important;
+    background-size: 20px 20px !important;
+    color: #000000 !important;
+  }
+}
+
+/* Notebook paper dotted background */
+html, body {
+  background-color: #fcfcf9 !important;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px) !important;
+  background-size: 20px 20px !important;
+  color: #000000 !important;
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
-/* Glassmorphism Styles */
+/* Completely remove cosmic/space stars background elements */
+.stars-bg, .stars-bg::before, .stars-bg::after {
+  display: none !important;
+}
+
+/* Force monochrome text across UI components */
+main, div, p, span, h1, h2, h3, h4, h5, h6, li, label, input, select, textarea, a {
+  color: #000000 !important;
+}
+
+/* Low-fidelity Wireframe / Sketch cards and panels */
 .glass-panel {
-  background: rgba(4, 15, 12, 0.55);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.12);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 4px 4px 0px 0px #000000 !important;
+  border-radius: 8px !important;
+  opacity: 1 !important;
 }
 
 .glass-panel-heavy {
-  background: rgba(3, 10, 8, 0.88);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(16, 185, 129, 0.18);
-  box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.65);
+  background: #ffffff !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: 6px 6px 0px 0px #000000 !important;
+  border-radius: 8px !important;
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(16, 185, 129, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  border-radius: 8px !important;
+  box-shadow: 4px 4px 0px 0px #000000 !important;
+  transition: all 0.1s ease-out !important;
 }
 
 .glass-card:hover {
-  background: rgba(16, 185, 129, 0.05);
-  border-color: rgba(16, 185, 129, 0.25);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(16, 185, 129, 0.15);
+  background: #fbfbf7 !important;
+  border-color: #000000 !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px 0px #000000 !important;
 }
 
+/* Hand-drawn inputs */
 .glass-input {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(16, 185, 129, 0.15);
-  color: #fff;
-  transition: all 0.2s;
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  border-radius: 6px !important;
+  color: #000000 !important;
+  box-shadow: 2px 2px 0px 0px #000000 !important;
+  transition: all 0.1s !important;
 }
 
 .glass-input:focus {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(16, 185, 129, 0.5);
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  background: #ffffff !important;
+  border-color: #000000 !important;
+  outline: none !important;
+  box-shadow: 4px 4px 0px 0px #000000 !important;
+  transform: translate(-1px, -1px) !important;
 }
 
-/* Glowing Neon Borders/Texts */
-.glow-purple {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+/* Flat Wireframe buttons */
+button, 
+button[type="submit"], 
+.btn-brutal,
+.glass-panel button,
+.glass-card button,
+header button,
+header a {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  border-radius: 6px !important;
+  box-shadow: 3px 3px 0px 0px #000000 !important;
+  font-weight: 700 !important;
+  transition: all 0.1s ease-out !important;
 }
 
-.glow-cyan {
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+button:hover, 
+button[type="submit"]:hover,
+.btn-brutal:hover,
+.glass-panel button:hover,
+.glass-card button:hover,
+header button:hover,
+header a:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 5px 5px 0px 0px #000000 !important;
+  background: #fcfcf9 !important;
 }
 
-.text-glow-purple {
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.65);
+button:active, 
+button[type="submit"]:active,
+.btn-brutal:active,
+.glass-panel button:active,
+.glass-card button:active,
+header button:active {
+  transform: translate(1px, 1px) !important;
+  box-shadow: 1px 1px 0px 0px #000000 !important;
 }
 
-.text-glow-cyan {
-  text-shadow: 0 0 10px rgba(245, 158, 11, 0.65);
+/* Badge styling as hand-drawn tags */
+.glass-card .rounded-2xl,
+.glass-panel .rounded-2xl,
+.glass-card .rounded-3xl,
+.glass-panel .rounded-3xl,
+header .glass-card {
+  border-radius: 4px !important;
+  border: 2px solid #000000 !important;
+  background: #ffffff !important;
+  box-shadow: 2px 2px 0px 0px #000000 !important;
+  color: #000000 !important;
+  padding: 2px 8px !important;
 }
 
-/* Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+/* Icon colors override */
+svg {
+  stroke: #000000 !important;
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+/* Disable glow elements */
+.glow-purple, .glow-cyan {
+  box-shadow: 3px 3px 0px 0px #000000 !important;
 }
 
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.6; }
+.text-glow-purple, .text-glow-cyan {
+  text-shadow: none !important;
+  color: #000000 !important;
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 8s infinite;
+/* Chart and graph stroke overrides for wireframe sketch feel */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #cccccc !important;
+  stroke-dasharray: 4 4 !important;
+}
+
+.recharts-curve.recharts-line-curve {
+  stroke: #000000 !important;
+  stroke-width: 3px !important;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.4);
+  background: #fcfcf9;
+  border-left: 2px solid #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(16, 185, 129, 0.35);
-  border-radius: 4px;
+  background: #000000;
+  border: 2px solid #fcfcf9;
+  border-radius: 0px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.55);
+/* Header customization for notebook wireframe header */
+header {
+  background: #ffffff !important;
+  border-bottom: 3.5px solid #000000 !important;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Space Stars Background */
-.stars-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -20;
-  background: radial-gradient(circle at 50% 50%, #031c13 0%, #010604 100%);
-  overflow: hidden;
-}
-
-.stars-bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background-image: 
-    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-  background-size: 550px 550px, 350px 350px, 250px 250px;
-  background-repeat: repeat;
-  opacity: 0.18;
-  animation: rotate-stars 200s linear infinite;
-}
-
-@keyframes rotate-stars {
-  from { transform: translate(-25%, -25%) rotate(0deg); }
-  to { transform: translate(-25%, -25%) rotate(360deg); }
-}
-
-/* Heading Typography */
+/* Typography styles */
 .font-space {
   font-family: var(--font-space);
+}
+
+/* Navigation items */
+header a.bg-white\/10 {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+header a.bg-white\/10 svg {
+  stroke: #ffffff !important;
+}
+
+/* Fix active badges in dashboard header */
+header .text-violet-400,
+header .text-cyan-400,
+header .text-amber-400 {
+  color: #000000 !important;
 }

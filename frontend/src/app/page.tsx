@@ -66,21 +66,10 @@ export default function Home() {
         
         {/* Left Hand side: Brand Presentation */}
         <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-950/40 border border-violet-500/30 text-violet-300 text-xs font-semibold tracking-wider font-mono uppercase animate-float">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            AI Model Development Contest 2026 Entry
-          </div>
           
-          <h1 className="font-space font-extrabold text-4xl sm:text-5xl md:text-6xl leading-tight text-white tracking-tight">
-            Step into the <br />
-            <span className="bg-gradient-to-r from-violet-400 via-indigo-300 to-cyan-300 bg-clip-text text-transparent text-glow-purple">
-              AI ScienceVerse
-            </span>
+          <h1 className="font-space font-extrabold text-5xl sm:text-6xl md:text-7xl leading-tight text-white tracking-tight">
+            SCIENCEVERSE
           </h1>
-          
-          <p className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Experience an immersive learning universe. Manipulate cells in 3D, simulate complex physics experiments, and dissect data structures with a real-time AI Academic Tutor.
-          </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
             <div className="glass-card p-4 rounded-2xl flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -112,8 +101,7 @@ export default function Home() {
         {/* Right Hand side: Auth Card */}
         <div className="lg:col-span-5 w-full max-w-md mx-auto">
           <div className="glass-panel-heavy p-8 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-violet-500/10 rounded-full blur-2xl" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+
 
             <div className="text-center mb-6">
               <h2 className="font-space font-bold text-2xl text-white">
