@@ -9,5 +9,4 @@ python-multipart==0.0.9
 httpx==0.27.0
 python-dotenv==1.0.1
 asyncpg==0.29.0
-sqlite3-binary==1.0.0; sys_platform == 'dummy'
-# psycopg2-binary can be added for PostgreSQL deployment on production, but is omitted locally to avoid build errors.
+psycopg2-binary==2.9.9
